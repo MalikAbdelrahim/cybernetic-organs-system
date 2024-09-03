@@ -14,7 +14,7 @@ public class CyberneticOrgan {
 
     public boolean isCompatible(String patientCompatibility)
     {
-        if(patientCompatibility.equals("yes"))
+        if(patientCompatibility.equals("1"))
         return true;
         else
         return false;

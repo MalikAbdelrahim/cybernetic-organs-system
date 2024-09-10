@@ -10,6 +10,21 @@ public class CyberneticOrgan {
     {
         return model;
     }
+    
+    public String getFunctionality()
+    {
+        return functionality;
+    }
+
+    public int getid()
+    {
+        return id;
+    }
+
+    public String getCompatibility()
+    {
+        return compatibility;
+    }
 
     public String getDetails()
     {

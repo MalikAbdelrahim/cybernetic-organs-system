@@ -46,6 +46,25 @@ public class OrganInventory {
 
     public ArrayList<CyberneticOrgan> searchOrganByFunctionality(String functionality)
     {
-        for(int i =0; i<inventory.size())
+        ArrayList<CyberneticOrgan> listRet= new ArrayList<CyberneticOrgan>();
+        for(int i =0; i<inventory.size();i++)
+        {
+            if(inventory.get(i).getFunctionality().equalsIgnoreCase(functionality))
+            {
+                listRet.add(inventory.get(i));
+            }
+        }
+        return listRet;
+    }
+    
+    public ArrayList<CyberneticOrgan> sortOrganByModel(ArrayList<CyberneticOrgan> listRet)
+    {
+        Comparator<CyberneticOrgan> cOSort = new Comparator<CyberneticOrgan>()
+        {
+            public String compare(CyberneticOrgan i, CyberneticOrgan j)
+            {
+                if(i.getModel())
+            }
+        }
     }
 }

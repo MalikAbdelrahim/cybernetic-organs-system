@@ -7,21 +7,21 @@ public class Patient {
     private int age;
     private String medicalHistory;
     private String installedOrgans[] = new String[5];
-    private CyberneticOrgan cyberneticOrgan[]= new CyberneticOrgan[5];
+    private CyberneticOrgan cyberneticOrgans[]= new CyberneticOrgan[5];
 
     public String addOrgan(CyberneticOrgan organ)
     {
         String str = null;
         int checker = 0;
-        for(int i =0; i< cyberneticOrgan.length; i++)
+        for(int i =0; i< cyberneticOrgans.length; i++)
         {
-            if(cyberneticOrgan[i] == null)
-                cyberneticOrgan[i] = organ;
+            if(cyberneticOrgans[i] == null)
+                cyberneticOrgans[i] = organ;
         }
         //checks to see if oran was added
-        for(int i =0; i< cyberneticOrgan.length; i++)
+        for(int i =0; i< cyberneticOrgans.length; i++)
         {
-            if(cyberneticOrgan[i].getModel().equalsIgnoreCase(organ.getModel()))
+            if(cyberneticOrgans[i].getModel().equalsIgnoreCase(organ.getModel()))
                 checker =1;
         }
         if(checker == 1)
@@ -40,23 +40,23 @@ public class Patient {
         return "1";
     }
 
-    public ArrayList getOrganList()
+    public ArrayList<CyberneticOrgan> getOrganList()
     {
         int checker =0;
         ArrayList <CyberneticOrgan> cyberneticOrganAL = new ArrayList <CyberneticOrgan>();
-        for(int i =0; i<cyberneticOrgan.length;i++)
+        for(int i =0; i<cyberneticOrgans.length;i++)
         {
-            if(this.cyberneticOrgan.equals(null))
+            if(this.cyberneticOrgans.equals(null))
             {
-                checker +=1;
+                checker ++;
                 continue;
             }
             else
             {
-                cyberneticOrganAL.add(cyberneticOrgan[i]);
+                cyberneticOrganAL.add(cyberneticOrgans[i]);
             }
         }
-        if(checker == 4)
+        if(checker == 5)
         System.out.print("No organs installed. Returning empty arraylist");
         return cyberneticOrganAL;
     }

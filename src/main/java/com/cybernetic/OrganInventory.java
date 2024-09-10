@@ -3,7 +3,7 @@ package com.cybernetic;
 import java.util.ArrayList;
 
 public class OrganInventory {
-    private ArrayList <String> inventory = new ArrayList<String>();
+    private ArrayList <CyberneticOrgan> inventory = new ArrayList<CyberneticOrgan>();
     private ArrayList <CyberneticOrgan> cyberneticOrgan = new ArrayList<CyberneticOrgan>();
 
     public String addOrgan(CyberneticOrgan organ)
@@ -20,9 +20,9 @@ public class OrganInventory {
     public String getOrganList()
     {
         String str=null;
-        for(int i=0; i<cyberneticOrgan.size(); i++)
+        for(int i=0; i<inventory.size(); i++)
         {
-            str+= cyberneticOrgan.get(i).getModel()+" ";
+            str+= inventory.get(i).getModel()+" ";
         }
         return str;
     }
@@ -42,5 +42,10 @@ public class OrganInventory {
         return "removed cybernetic organ";
         else
         return "organ not found";
+    }
+
+    public ArrayList<CyberneticOrgan> searchOrganByFunctionality(String functionality)
+    {
+        for(int i =0; i<inventory.size())
     }
 }

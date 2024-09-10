@@ -6,6 +6,11 @@ public class CyberneticOrgan {
     private String functionality;
     private boolean compatibility;
 
+    public String getModel()
+    {
+        return model;
+    }
+
     public String getDetails()
     {
         String ret = "ID:"+this.id+" Model:"+this.model+" Functionality: "+this.functionality;

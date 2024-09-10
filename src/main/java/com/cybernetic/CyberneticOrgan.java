@@ -4,7 +4,7 @@ public class CyberneticOrgan {
     private int id;
     private String model;
     private String functionality;
-    private boolean compatibility;
+    private String compatibility;
 
     public String getModel()
     {

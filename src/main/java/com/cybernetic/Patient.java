@@ -7,7 +7,7 @@ public class Patient {
     private int age;
     private String medicalHistory;
     private String installedOrgans[] = new String[5];
-    private String cyberneticOrgan[]= new String[5];
+    private CyberneticOrgan cyberneticOrgan[]= new CyberneticOrgan[5];
 
     public String addOrgan(CyberneticOrgan organ)
     {
@@ -16,11 +16,12 @@ public class Patient {
         for(int i =0; i< cyberneticOrgan.length; i++)
         {
             if(cyberneticOrgan[i] == null)
-                cyberneticOrgan[i] = organ.getModel();
+                cyberneticOrgan[i] = organ;
         }
+        //checks to see if oran was added
         for(int i =0; i< cyberneticOrgan.length; i++)
         {
-            if(cyberneticOrgan[i].equalsIgnoreCase(organ.getModel()))
+            if(cyberneticOrgan[i].getModel().equalsIgnoreCase(organ.getModel()))
                 checker =1;
         }
         if(checker == 1)
@@ -42,7 +43,7 @@ public class Patient {
     public ArrayList getOrganList()
     {
         int checker =0;
-        ArrayList <String> cyberneticOrganAL = new ArrayList <String>();
+        ArrayList <CyberneticOrgan> cyberneticOrganAL = new ArrayList <CyberneticOrgan>();
         for(int i =0; i<cyberneticOrgan.length;i++)
         {
             if(this.cyberneticOrgan.equals(null))

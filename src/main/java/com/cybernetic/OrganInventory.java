@@ -1,6 +1,8 @@
 package com.cybernetic;
 
+import java.util.Comparator;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrganInventory {
     private ArrayList <CyberneticOrgan> inventory = new ArrayList<CyberneticOrgan>();
@@ -59,12 +61,18 @@ public class OrganInventory {
     
     public ArrayList<CyberneticOrgan> sortOrganByModel(ArrayList<CyberneticOrgan> listRet)
     {
-        Comparator<CyberneticOrgan> cOSort = new Comparator<CyberneticOrgan>()
-        {
-            public String compare(CyberneticOrgan i, CyberneticOrgan j)
+        Comparator<CyberneticOrgan> com = new Comparator<CyberneticOrgan>() {
+            public int compare(CyberneticOrgan i, CyberneticOrgan j)
             {
-                if(i.getModel())
+                if(i.getModel().compareTo(j.getModel())< 0)
+                {
+                    return 1;
+                }
+                else 
+                return 2;
             }
-        }
+        };
+        Collections.sort(listRet, com);
+        return listRet;
     }
 }

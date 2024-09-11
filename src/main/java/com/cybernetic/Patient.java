@@ -9,6 +9,13 @@ public class Patient {
     private String installedOrgans[] = new String[5];
     private CyberneticOrgan cyberneticOrgans[]= new CyberneticOrgan[5];
 
+    public Patient(String name, int age, String medicalHistory)
+    {
+        this.name = name;
+        this.age = age;
+        this.medicalHistory= medicalHistory;
+    }
+
     public String addOrgan(CyberneticOrgan organ)
     {
         String str = null;
@@ -16,7 +23,7 @@ public class Patient {
         for(int i =0; i< cyberneticOrgans.length; i++)
         {
             if(cyberneticOrgans[i] == null)
-                cyberneticOrgans[i] = organ;
+            cyberneticOrgans[i] = organ;
         }
         //checks to see if oran was added
         for(int i =0; i< cyberneticOrgans.length; i++)
@@ -46,7 +53,7 @@ public class Patient {
         ArrayList <CyberneticOrgan> cyberneticOrganAL = new ArrayList <CyberneticOrgan>();
         for(int i =0; i<cyberneticOrgans.length;i++)
         {
-            if(this.cyberneticOrgans.equals(null))
+            if(this.cyberneticOrgans==null)
             {
                 checker ++;
                 continue;

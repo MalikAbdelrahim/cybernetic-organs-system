@@ -9,6 +9,31 @@ public class AlgorithmsandSorts {
 
     public void bubblesort()
     {
+
+    }
+
+    public void insertionSort()
+    {
+        
+    }
+
+    public void selectionSort()
+    {
+        
+    }
+
+    public void mergeSort()
+    {
+
+    }
+
+    public void linearSearch()
+    {
+
+    }
+
+    public void binarySearch()
+    {
         
     }
 }

@@ -1,4 +1,4 @@
-import java.util.Array;
+package com.cybernetic;
 
 public class AlgorithmsandSorts {
 
@@ -13,11 +13,11 @@ public class AlgorithmsandSorts {
             {
                 for(int j=0; i<list.length -i - 1; i++)
                 {
-                    if(array[j]>array[j+1])
+                    if(list[j]>list[j+1])
                     {
-                        int temp=array[j];
-                        array[j]=array[j+1];
-                        array[j+1]=temp;
+                        int temp=list[j];
+                        list[j]=list[j+1];
+                        list[j+1]=temp;
 
                     }
                 }
@@ -26,14 +26,14 @@ public class AlgorithmsandSorts {
 
     public void insertionSort(int[] list)
     {
-        for(int i =1; i <array.length; i++)
+        for(int i =1; i <list.length; i++)
             {
                 int temp = list[i];
                 int j = i-1;
 
                 while(j>=0 && list[j] > temp)
                 {
-                    array[j+1]=array[j];
+                    list[j+1]=list[j];
                     j--;
                 }
                 list[j+1]=temp;
@@ -123,9 +123,9 @@ public class AlgorithmsandSorts {
 
     public int linearSearch(int[] list, int value)
     {
-        for(int i =0; i<array.length; i++)
+        for(int i =0; i<list.length; i++)
         {
-            if(array[i] == value) 
+            if(list[i] == value) 
             return i;
         }
         return -1;

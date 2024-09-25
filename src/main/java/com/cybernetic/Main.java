@@ -4,13 +4,11 @@ public class Main{
     public static void main(String[] args){
         AlgorithmsandSorts tester = new AlgorithmsandSorts();
 
-        
+        long start = System.nanoTime();
+        long duration= (System.nanoTime()-start)/1000000;
+        System.out.println(duration+"ms");
 
-        /*int[] bigboy = new int[7000];
-        for(int i=0; i<bigboy.length; i++)
-        {
-            bigboy[i]=i;
-        }
-        System.out.println(tester.binarySearch(bigboy, 5345));*/
+        //link to spreadsheet https://collincollege620-my.sharepoint.com/:x:/g/personal/mabdelrahim1_collin_edu/ER8rpOuNLZ1Kk2AAM3HXag4B764JlFUPip0eprEWuWmITA?e=a9n8n6
+         
     }
 }

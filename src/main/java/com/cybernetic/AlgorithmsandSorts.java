@@ -7,18 +7,17 @@ public class AlgorithmsandSorts {
 
     }
 
-    public void bubblesort(int[] list)
+    public void bubbleSort(int[] list)
     {
         for(int i=0; i<list.length -1; i++)
             {
-                for(int j=0; i<list.length -i - 1; i++)
+                for(int j=0; j<list.length -i - 1; j++)
                 {
                     if(list[j]>list[j+1])
                     {
                         int temp=list[j];
                         list[j]=list[j+1];
                         list[j+1]=temp;
-
                     }
                 }
             }
@@ -131,8 +130,27 @@ public class AlgorithmsandSorts {
         return -1;
     }
 
-    public void binarySearch()
+    public int binarySearch(int[] list, int target)
     {
-
+        int low = 0;
+        int high = list.length-1;
+        while(low <= high) 
+        {
+            int middle = low + (high - low) / 2;
+            int value = list[middle];
+        if(value<target)
+        {
+        low = middle +1;
+        }
+        else if(value>target)
+        {
+            high=middle-1;
+        }
+        else
+        {
+            return middle;
+        }
+        }
+        return -1;
     }
 }

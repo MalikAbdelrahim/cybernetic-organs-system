@@ -5,10 +5,18 @@ public class Main{
         AlgorithmsandSorts tester = new AlgorithmsandSorts();
 
         long start = System.nanoTime();
-        long duration= (System.nanoTime()-start)/1000000;
-        System.out.println(duration+"ms");
+        int[] array = new int[100000];
 
-        //link to spreadsheet https://collincollege620-my.sharepoint.com/:x:/g/personal/mabdelrahim1_collin_edu/ER8rpOuNLZ1Kk2AAM3HXag4B764JlFUPip0eprEWuWmITA?e=a9n8n6
+        for(int i=0; i<array.length; i++)
+        {
+            array[i]=i;
+        }
+
+        tester.insertionSort(array);
+        //System.out.println(tester.binarySearch(bigboy, 5345));
+        long duration= (System.nanoTime()-start);
+        System.out.println(duration);
+
          
     }
 }

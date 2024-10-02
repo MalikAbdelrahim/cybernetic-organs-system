@@ -3,76 +3,33 @@ package com.cybernetic;
 import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class OrganInventory {
-    private ArrayList <CyberneticOrgan> inventory = new ArrayList<CyberneticOrgan>();
-    private ArrayList <CyberneticOrgan> cyberneticOrgan = new ArrayList<CyberneticOrgan>();
+    private final List<Organ> inventory;
 
-    public String addOrgan(CyberneticOrgan organ)
-    {
-        cyberneticOrgan.add(organ);
-        return "Organ Added";
-    }
-    
-    public String getOrgan(String model)
-    {
-        return "1";
+    public OrganInventory() {
+        this.inventory = new ArrayList<>();
     }
 
-    public String getOrganList()
-    {
-        String str=null;
-        for(int i=0; i<inventory.size(); i++)
-        {
-            str+= inventory.get(i).getModel()+" ";
-        }
-        return str;
+    public void addOrgan(Organ organ) {
+        inventory.add(organ);
     }
 
-    public String removeOrgan(String model)
-    {
-        int checker =0;
-        for(int i=0; i< cyberneticOrgan.size(); i++)
-        {
-           if(cyberneticOrgan.get(i).getModel().equalsIgnoreCase(model))
-           {
-                cyberneticOrgan.remove(i);
-                checker++;
-           }
-        }
-        if(checker==1)
-        return "removed cybernetic organ";
-        else
-        return "organ not found";
+    public List<Organ> getOrganList() {
+        return Collections.unmodifiableList(inventory);
     }
 
-    public ArrayList<CyberneticOrgan> searchOrganByFunctionality(String functionality)
-    {
-        ArrayList<CyberneticOrgan> listRet= new ArrayList<CyberneticOrgan>();
-        for(int i =0; i<inventory.size();i++)
-        {
-            if(inventory.get(i).getFunctionality().equalsIgnoreCase(functionality))
-            {
-                listRet.add(inventory.get(i));
-            }
-        }
-        return listRet;
+    //ability to sort by multiple properties in order. name, model, compatibility using built-in sort
+    public List<Organ> sortOrganByNameModelAndCompatibilityUsingBuiltInSort(List<Organ> sortedOrgans) {
+        sortedOrgans.sort(Comparator.comparing(Organ::getName)
+        .thenComparing(Organ::getModel)
+        .thenComparing(Organ::getCompatibility));
+        return getOrganList();
     }
-    
-    public ArrayList<CyberneticOrgan> sortOrganByModel(ArrayList<CyberneticOrgan> listRet)
-    {
-        Comparator<CyberneticOrgan> com = new Comparator<CyberneticOrgan>() {
-            public int compare(CyberneticOrgan i, CyberneticOrgan j)
-            {
-                if(i.getModel().compareTo(j.getModel())< 0)
-                {
-                    return 1;
-                }
-                else 
-                return 2;
-            }
-        };
-        Collections.sort(listRet, com);
-        return listRet;
+
+    //ability to sort by multiple properties in order. name, model, compatibility using quicksort
+    public List<Organ> quickSortOrganByNameModelAndCompatibility(List<Organ> unmodifiableOrganList) {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }

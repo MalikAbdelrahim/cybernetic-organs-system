@@ -52,5 +52,4 @@ public class Organ {
         return "Model: " + model + ", Organ Name: " + name + ", Functionality: " + functionality + ", Compatibility: " + compatibility + ", Health: " + health + "%";
     }
 
-
 }

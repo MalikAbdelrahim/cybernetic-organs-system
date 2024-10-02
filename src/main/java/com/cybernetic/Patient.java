@@ -1,71 +1,54 @@
 package com.cybernetic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Patient {
-    private String name;
+    private final String name;
     private int age;
     private String medicalHistory;
-    private String installedOrgans[] = new String[5];
-    private CyberneticOrgan cyberneticOrgans[]= new CyberneticOrgan[5];
+    private Organ[] installedOrgans;
+    private int organCount;
 
-    public Patient(String name, int age, String medicalHistory)
-    {
+    public Patient(String name, int age, String medicalHistory) {
         this.name = name;
         this.age = age;
-        this.medicalHistory= medicalHistory;
+        this.medicalHistory = medicalHistory;
+        this.installedOrgans = new Organ[5];
+        this.organCount = 0;
     }
 
-    public String addOrgan(CyberneticOrgan organ)
-    {
-        String str = null;
-        int checker = 0;
-        for(int i =0; i< cyberneticOrgans.length; i++)
-        {
-            if(cyberneticOrgans[i] == null)
-            cyberneticOrgans[i] = organ;
-        }
-        //checks to see if oran was added
-        for(int i =0; i< cyberneticOrgans.length; i++)
-        {
-            if(cyberneticOrgans[i].getModel().equalsIgnoreCase(organ.getModel()))
-                checker =1;
-        }
-        if(checker == 1)
-        {
-            str = "Organ Added";
-        }
-        else if(checker == 0)
-        {
-           str ="Can not accept any more organs";
-        }
-        return str;
+    public String getName() {
+        return name;
     }
 
-    public String getPatientInfo()
-    {
-        return "1";
+    public String addOrgan(Organ organ) {
+        if (organCount < installedOrgans.length) {
+            installedOrgans[organCount++] = organ;
+            return "Organ added: " + organ.getDetails();
+        } else {
+            return "No space available to add more organs.";
+        }
     }
 
-    public ArrayList<CyberneticOrgan> getOrganList()
-    {
-        int checker =0;
-        ArrayList <CyberneticOrgan> cyberneticOrganAL = new ArrayList <CyberneticOrgan>();
-        for(int i =0; i<cyberneticOrgans.length;i++)
-        {
-            if(this.cyberneticOrgans==null)
-            {
-                checker ++;
-                continue;
-            }
-            else
-            {
-                cyberneticOrganAL.add(cyberneticOrgans[i]);
+    public List<Organ> getOrganList() {
+        List<Organ> organList = new ArrayList<>();
+        for (int i = 0; i < organCount; i++) {
+            organList.add(installedOrgans[i]);
+        }
+        return organList;
+
+    }
+
+    public String getPatientInfo() {
+        StringBuilder info = new StringBuilder("Name: " + name + ", Age: " + age + ", Medical History: " + medicalHistory + ", Installed Organs: ");
+        if (organCount == 0) {
+            info.append("None");
+        } else {
+            for (int i = 0; i < organCount; i++) {
+                info.append("\n").append(installedOrgans[i].getDetails());
             }
         }
-        if(checker == 5)
-        System.out.print("No organs installed. Returning empty arraylist");
-        return cyberneticOrganAL;
+        return info.toString();
     }
 }
-

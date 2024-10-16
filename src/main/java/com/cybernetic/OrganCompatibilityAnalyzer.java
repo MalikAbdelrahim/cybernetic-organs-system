@@ -29,17 +29,28 @@ public class OrganCompatibilityAnalyzer {
     }
 
     private int calculateBloodTypeCompatibility(String donorType, String recipientType) {
-        //TODO: Calculate compatibility for each organ-patient pair based on compatibility calculation rules.
+        if(donorType.equals(recipientType))
+            return 100;
+        //if(donorType.equals(""))
+        //for this I have to make a list of compatible organs and their types
         return 0;
     }
 
     private int calculateWeightCompatibility(int organWeight, int patientWeight) {
-       //TODO: Calculate compatibility for each organ-patient pair based on compatibility calculation rules.
+        if(organWeight/(patientWeight*1000)>=.8 && || organWeight/(patientWeight*1000)<=1.2)
+            return 100;
+        elseif(organWeight/(patientWeight*1000)>=.6 && || organWeight/(patientWeight*1000)<=1.4)
+        return 50;
+        else
         return 0;
     }
 
     private int calculateHlaCompatibility(String organHla, String patientHla) {
-       //TODO: Calculate compatibility for each organ-patient pair based on compatibility calculation rules.
+        //I have to break each string in a list of chars
+        for(int i =0; i <6; i++)
+        {
+
+        }
         return 0;
     }
 

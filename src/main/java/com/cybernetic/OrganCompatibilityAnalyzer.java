@@ -6,6 +6,14 @@ import java.util.List;
 public class OrganCompatibilityAnalyzer {
     private List<Organ> organs;
     private List<Patient> patients;
+    private    String[] A+ = {"A+", "A-", "O+", "O-"};
+    private    String[] A- = {"A-", "O-"};
+    private    String[] B+ = {"B+", "B-", "O+", "O-"};
+    private    String[] B- = {"B-", "O-"};
+    private    String[] AB+ = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+    private    String[] AB- = {"A-", "B-", "AB-", "O-"};
+    private    String[] O+ = {"O+", "O-"};
+    private    String[] O- = {"O-"}; 
 
     public OrganCompatibilityAnalyzer() {
         organs = new ArrayList<>();
@@ -29,10 +37,20 @@ public class OrganCompatibilityAnalyzer {
     }
 
     private int calculateBloodTypeCompatibility(String donorType, String recipientType) {
+        String temp = recipientType;
+        int checkr=0;
         if(donorType.equals(recipientType))
             return 100;
-        //if(donorType.equals(""))
-        //for this I have to make a list of compatible organs and their types
+        else
+        for(int i =0; 0< recipientType.length(); i++)
+        {
+            if(donorType.equals(String recipentType[i]))
+            {
+                return 80
+                checkr=1;
+            }
+        }
+        if(checkr==1)
         return 0;
     }
 

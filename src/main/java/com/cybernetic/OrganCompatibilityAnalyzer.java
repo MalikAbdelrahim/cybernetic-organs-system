@@ -31,7 +31,18 @@ public class OrganCompatibilityAnalyzer {
     public int[][] createCompatibilityMatrix() {
         int[][] matrix = new int[organs.size()][patients.size() * 3]; // 3 factors: blood type, weight, HLA
 
-        //TODO:  Calculate compatibility for each organ-patient pair
+        for (int i = 0; i < matrix.length; i++) 
+        {
+            for (int j = 0; j < matrix[i].length; j++) 
+            {
+                if(i==0)
+                {
+                System.out.println{patients[j].getid()};
+                }
+                if(i==1)
+                //trying to retrieve blood tpye
+
+            }
 
         return matrix;
     }
@@ -44,9 +55,9 @@ public class OrganCompatibilityAnalyzer {
         else
         for(int i =0; 0< recipientType.length(); i++)
         {
-            if(donorType.equals(String recipentType[i]))
+            if(donorType.equals(recipentType[i]))
             {
-                return 80
+                return 80;
                 checkr=1;
             }
         }
@@ -57,7 +68,7 @@ public class OrganCompatibilityAnalyzer {
     private int calculateWeightCompatibility(int organWeight, int patientWeight) {
         if(organWeight/(patientWeight*1000)>=.8 && || organWeight/(patientWeight*1000)<=1.2)
             return 100;
-        elseif(organWeight/(patientWeight*1000)>=.6 && || organWeight/(patientWeight*1000)<=1.4)
+        else if(organWeight/(patientWeight*1000)>=.6 && || organWeight/(patientWeight*1000)<=1.4)
         return 50;
         else
         return 0;
@@ -68,7 +79,7 @@ public class OrganCompatibilityAnalyzer {
         int total=0;
         char[] organ = organHla.toCharArray();
         char[] patient = patientHla.toCharArray();
-        for(int i =0; i <organ.length(); i++)
+        for(int i =0; i <organ.length; i++)
         {
             if(organ[i] == patient[i])
             {
@@ -82,7 +93,7 @@ public class OrganCompatibilityAnalyzer {
         int[][] compatibilityMatrix = createCompatibilityMatrix();
         double[][] resultMatrix = new double[organs.size()][patients.size()];
 
-        //TODO: calculate the weighted compatibility for each organ-patient pair
+        (p1.calculateBloodTypeCompatibility(O1, P1)*weights[0])+
 
         return resultMatrix;
     }

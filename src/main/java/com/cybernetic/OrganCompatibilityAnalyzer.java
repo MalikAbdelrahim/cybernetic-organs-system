@@ -65,11 +65,17 @@ public class OrganCompatibilityAnalyzer {
 
     private int calculateHlaCompatibility(String organHla, String patientHla) {
         //I have to break each string in a list of chars
-        for(int i =0; i <6; i++)
+        int total=0;
+        char[] organ = organHla.toCharArray();
+        char[] patient = patientHla.toCharArray();
+        for(int i =0; i <organ.length(); i++)
         {
-
+            if(organ[i] == patient[i])
+            {
+                total++;
+            }
         }
-        return 0;
+        return total;
     }
 
     public double[][] calculateWeightedCompatibility(double[] weights) {

@@ -4,6 +4,7 @@ public class OrganCompatibilityAnalyzer {
 
     public Patient findCompatiblePatient(Organ organ, WaitingList waitingList) {
       //TODO: week - 8 Implement this method
+        System.out.println("I am on it");
        throw new UnsupportedOperationException("Not implemented yet");
     }
 

@@ -1,23 +1,29 @@
 package com.cybernetic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class OrganCompatibilityAnalyzer {
     private List<Organ> organs;
     private List<Patient> patients;
-    private    String[] A+ = {"A+", "A-", "O+", "O-"};
-    private    String[] A- = {"A-", "O-"};
-    private    String[] B+ = {"B+", "B-", "O+", "O-"};
-    private    String[] B- = {"B-", "O-"};
-    private    String[] AB+ = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-    private    String[] AB- = {"A-", "B-", "AB-", "O-"};
-    private    String[] O+ = {"O+", "O-"};
-    private    String[] O- = {"O-"}; 
+    private HashMap<String, List<String>> bloodTypeMap;
+    
 
     public OrganCompatibilityAnalyzer() {
         organs = new ArrayList<>();
         patients = new ArrayList<>();
+        bloodTypeMap = new HashMap<>();
+        
+        bloodTypeMap.put("A+", Arrays.asList("A+", "A-", "O+", "O-"));
+        bloodTypeMap.put("A-", Arrays.asList("A-", "O-"));
+        bloodTypeMap.put("B+", Arrays.asList("B+", "B-", "O+", "O-"));
+        bloodTypeMap.put("B-", Arrays.asList("B-", "O-"));
+        bloodTypeMap.put("AB+", Arrays.asList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"));
+        bloodTypeMap.put("AB-", Arrays.asList("A-", "B-", "AB-", "O-"));
+        bloodTypeMap.put("O+", Arrays.asList("O+", "O-"));
+        bloodTypeMap.put("O-", Arrays.asList("O-"));
     }
 
     public void addOrgan(Organ organ) {
@@ -31,44 +37,38 @@ public class OrganCompatibilityAnalyzer {
     public int[][] createCompatibilityMatrix() {
         int[][] matrix = new int[organs.size()][patients.size() * 3]; // 3 factors: blood type, weight, HLA
 
-        for (int i = 0; i < matrix.length; i++) 
+        for (int i = 0; i < organs.size(); i++) 
         {
-            for (int j = 0; j < matrix[i].length; j++) 
+            for (int j = 0; j < patients.size(); j++) 
             {
-                if(i==0)
                 {
-                System.out.println{patients[j].getid()};
+                    matrix[i][j]=patients.get(i).getId();
                 }
-                if(i==1)
-                //trying to retrieve blood tpye
-
             }
-
+        }
         return matrix;
     }
 
     private int calculateBloodTypeCompatibility(String donorType, String recipientType) {
-        String temp = recipientType;
-        int checkr=0;
         if(donorType.equals(recipientType))
             return 100;
-        else
+        
+        
         for(int i =0; 0< recipientType.length(); i++)
         {
-            if(donorType.equals(recipentType[i]))
+            if(donorType.equals(bloodTypeMap.get(recipientType).get(i)))
             {
                 return 80;
-                checkr=1;
             }
         }
-        if(checkr==1)
         return 0;
     }
 
     private int calculateWeightCompatibility(int organWeight, int patientWeight) {
-        if(organWeight/(patientWeight*1000)>=.8 && || organWeight/(patientWeight*1000)<=1.2)
+        int kgratio= organWeight/(patientWeight*1000);
+        if(kgratio>=.8 && kgratio <=1.2)
             return 100;
-        else if(organWeight/(patientWeight*1000)>=.6 && || organWeight/(patientWeight*1000)<=1.4)
+        else if(kgratio>=.6 && kgratio <=1.4)
         return 50;
         else
         return 0;
@@ -92,9 +92,7 @@ public class OrganCompatibilityAnalyzer {
     public double[][] calculateWeightedCompatibility(double[] weights) {
         int[][] compatibilityMatrix = createCompatibilityMatrix();
         double[][] resultMatrix = new double[organs.size()][patients.size()];
-
-        (p1.calculateBloodTypeCompatibility(O1, P1)*weights[0])+
-
+        
         return resultMatrix;
     }
 

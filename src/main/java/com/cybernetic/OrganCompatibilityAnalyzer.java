@@ -37,15 +37,21 @@ public class OrganCompatibilityAnalyzer {
     public int[][] createCompatibilityMatrix() {
         int[][] matrix = new int[organs.size()][patients.size() * 3]; // 3 factors: blood type, weight, HLA
 
-        for (int i = 0; i < organs.size(); i++) 
-        {
-            for (int j = 0; j < patients.size(); j++) 
-            {
-                {
-                    matrix[i][j]=patients.get(i).getId();
-                }
-            }
+       for (int i = 0; i < organs.size(); i++) {
+        for (int j = 0; j < patients.size(); j++) {
+            Organ organ = organs.get(i);
+            Patient patient = patients.get(j);
+
+            // Blood type compatibility
+            matrix[i][j*3] = calculateBloodTypeCompatibility(organ.getBloodType(), patient.getBloodType());
+
+            // Weight compatibility
+            matrix[i][j*3 + 1] = calculateWeightCompatibility(organ.getWeight(), patient.getWeight());
+
+            // HLA compatibility
+            matrix[i][j*3 + 2] = calculateHlaCompatibility(organ.getHlaType(), patient.getHlaType());
         }
+    }
         return matrix;
     }
 
@@ -54,7 +60,7 @@ public class OrganCompatibilityAnalyzer {
             return 100;
         
         
-        for(int i =0; 0< recipientType.length(); i++)
+        for(int i =0; i < recipientType.length(); i++)
         {
             if(donorType.equals(bloodTypeMap.get(recipientType).get(i)))
             {
@@ -79,14 +85,14 @@ public class OrganCompatibilityAnalyzer {
         int total=0;
         char[] organ = organHla.toCharArray();
         char[] patient = patientHla.toCharArray();
-        for(int i =0; i <organ.length; i++)
+        for(int i =0; i <5; i++)
         {
             if(organ[i] == patient[i])
             {
                 total++;
             }
         }
-        return total;
+        return total*10;
     }
 
     public double[][] calculateWeightedCompatibility(double[] weights) {
@@ -100,8 +106,12 @@ public class OrganCompatibilityAnalyzer {
     public void displayMatrix(int[][] matrix) {
         System.out.println("Initial Compatibility Matrix:");
 
-       //TODO: complete the displayMatrix method to display the initial compatibility matrix
-
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println(); // New line after each row
+        }
     }
 
     public void displayWeightMatrix(double[] weights) {

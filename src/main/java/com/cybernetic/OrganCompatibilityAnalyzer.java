@@ -37,7 +37,7 @@ public class OrganCompatibilityAnalyzer {
     public int[][] createCompatibilityMatrix() {
         int[][] matrix = new int[organs.size()][patients.size() * 3]; // 3 factors: blood type, weight, HLA
 
-       for (int i = 0; i < organs.size(); i++) {
+        for (int i = 0; i < organs.size(); i++) {
         for (int j = 0; j < patients.size(); j++) {
             Organ organ = organs.get(i);
             Patient patient = patients.get(j);
@@ -126,6 +126,17 @@ public class OrganCompatibilityAnalyzer {
         System.out.println("\nFinal Weighted Compatibility Matrix:");
         System.out.print("     ");
        //TODO: complete the displayWeightedMatrix method to display the final weighted compatibility matrix
+       int[][] wMatrix = new int[2][3];
+       for (int i = 0; i < wMatrix.length; i++) {
+        for (int j = 0; j < wMatrix[i].length; j++) {
+            Organ organ = organs.get(i);
+            Patient patient = patients.get(j);
+            int getBloodType =calculateBloodTypeCompatibility(organ.getBloodType(), patient.getBloodType());
+            int getWeight =calculateWeightCompatibility(organ.getWeight(), patient.getWeight());
+            int getHLA = calculateHlaCompatibility(organ.getHlaType(), patient.getHlaType());
+            wMatrix[i][j]= (getBloodType )
+        }
+    }
     }
 
 }
